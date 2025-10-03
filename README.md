@@ -4,6 +4,9 @@
 
 A small app that tells you the weather for a zip code
 
+![Weather Form](public/form.png)
+![Weather Forecast](public/forecast.png)
+
 ## Setup
 
 Install dependencies
