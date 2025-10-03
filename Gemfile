@@ -50,7 +50,12 @@ group :development, :test do
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
 
-  gem "rspec-rails"
+  gem "rspec-rails", "~> 5.0"
+end
+
+group :test do
+  gem "vcr", "~> 6.3"
+  gem "webmock", "3.25"
 end
 
 group :development do
