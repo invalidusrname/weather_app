@@ -2,4 +2,28 @@
 
 # Weather App
 
-A small app that can tell you the weather
+A small app that tells you the weather for a zip code
+
+## Setup
+
+Install dependencies
+
+```
+./bin/setup
+```
+
+## Running
+
+Run the app locally in development mode
+
+```
+./bin/dev
+```
+
+## Tests
+
+Run the specs
+
+```
+bundle exec rspec
+```
