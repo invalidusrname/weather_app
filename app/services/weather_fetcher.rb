@@ -17,7 +17,8 @@ class WeatherFetcher
     forecast = Rails.cache.fetch(cache_key, expires_in: 30.minutes, force: force) do
       cache_hit = false
       params = { alerts: "no", aqi: "no", days: "5", key: api_key, q: zip }
-      query = URI.encode_www_form(params)
+      sorted_params = params.sort_by { |k, _| k.to_s }
+      query = URI.encode_www_form(sorted_params)
 
       uri = URI("https://api.weatherapi.com/v1/forecast.json?#{query}")
 
