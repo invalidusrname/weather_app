@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.weatherapi.com/v1/forecast.json?alerts=no&aqi=no&days=5&key=<WEATHER_API_KEY>&q=29732
+    uri: https://api.weatherapi.com/v1/forecast.json?alerts=no&aqi=no&days=5&key=<WEATHER_API_TOKEN>&q=29732
     body:
       encoding: US-ASCII
       string: ''

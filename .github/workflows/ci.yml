@@ -66,6 +66,5 @@ jobs:
           bundler-cache: true
       - name: Run tests
         env:
-          RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
+          WEATHER_API_TOKEN: ${{ secrets.WEATHER_API_TOKEN }}
         run: ./bin/rspec
-

@@ -102,7 +102,7 @@ VCR.configure do |config|
   config.hook_into :webmock
   config.configure_rspec_metadata!
 
-  config.filter_sensitive_data('<WEATHER_API_KEY>') do
-    Rails.application.credentials.dig(:weather_api, :token)
+  config.filter_sensitive_data('<WEATHER_API_TOKEN>') do
+    ENV['WEATHER_API_TOKEN'] || Rails.application.credentials.dig(:weather_api, :token)
   end
 end
