@@ -23,7 +23,7 @@ Run the app locally in development mode
 ./bin/dev
 ```
 
-If you do not have the master.key setup, you'll need to use an ENV var to fetch the weather:
+If you do not have the master.key setup or available, you'll need to register with [weatherapi.com](https://www.weatherapi.com/) and get an API key. Use `WEATHER_API_TOKEN` as an ENV var for fetching the weather:
 
 ```
 WEATHER_API_TOKEN=88888CHANGEME8888888 ./bin/dev
