@@ -65,4 +65,6 @@ jobs:
           ruby-version: .ruby-version
           bundler-cache: true
       - name: Run tests
+        env:
+          WEATHER_API_TOKEN: ${{ secrets.WEATHER_API_TOKEN }}
         run: ./bin/rspec
