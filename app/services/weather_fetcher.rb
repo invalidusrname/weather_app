@@ -10,6 +10,7 @@ class WeatherFetcher
     cache_hit = true
 
     api_key = ENV["WEATHER_API_TOKEN"] || Rails.application.credentials.dig(:weather_api, :token)
+    puts "API_KEY size: #{api_key.to_s.length}"
 
     forecast = Rails.cache.fetch(cache_key, expires_in: 30.minutes, force: force) do
       cache_hit = false
