@@ -10,15 +10,11 @@ class WeatherFetcher
     cache_hit = true
 
     api_key = ENV["WEATHER_API_TOKEN"] || Rails.application.credentials.dig(:weather_api, :token)
-    puts "WEATHER_API_TOKEN size: #{ENV["WEATHER_API_TOKEN"].to_s.length}"
-    puts "CREDENTIAL TOKEN size: #{Rails.application.credentials.dig(:weather_api, :token)}"
-    puts "API_KEY size: #{api_key.to_s.length}"
 
     forecast = Rails.cache.fetch(cache_key, expires_in: 30.minutes, force: force) do
       cache_hit = false
       params = { alerts: "no", aqi: "no", days: "5", key: api_key, q: zip }
-      sorted_params = params.sort_by { |k, _| k.to_s }
-      query = URI.encode_www_form(sorted_params)
+      query = URI.encode_www_form(params)
 
       uri = URI("https://api.weatherapi.com/v1/forecast.json?#{query}")
 
