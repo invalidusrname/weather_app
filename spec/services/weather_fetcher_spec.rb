@@ -42,7 +42,7 @@ describe "WeatherFetcher" do
     it "fails with Service Unavailable" do
       allow(Net::HTTP).to receive(:get_response).and_raise(StandardError)
       result = WeatherFetcher.fetch_forecast('11111')
-    
+
       expect(result[:error]).to eq("Forecast unavailable")
     end
 
