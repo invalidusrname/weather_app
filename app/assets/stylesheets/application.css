@@ -130,3 +130,9 @@ button:hover, .button:hover {
 	background-color: #4facfe;
 	border-radius: 5px;
 }
+
+.refresh {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+}
