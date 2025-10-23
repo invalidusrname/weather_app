@@ -24,11 +24,10 @@ class WeatherController < ApplicationController
   end
 
   def handle_error(error_message, zip)
+    flash[:error] = error_message
+
     respond_to do |format|
-      format.html do
-        flash[:error] = error_message
-        redirect_to weather_index_path
-      end
+      format.html { redirect_to weather_index_path }
       format.turbo_stream do
         render turbo_stream: turbo_stream.update(
           "weather-frame",
@@ -45,9 +44,7 @@ class WeatherController < ApplicationController
     locals = { forecast:, cache_hit:, zip:, force: }
 
     respond_to do |format|
-      format.html do
-        render :forecast, locals:
-      end
+      format.html { render :forecast, locals: }
       format.turbo_stream do
         render turbo_stream: turbo_stream.update(
           "weather-frame",
