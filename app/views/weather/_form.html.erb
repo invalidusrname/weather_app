@@ -1,0 +1,8 @@
+<div class="form-container">
+  <h2>Weather Forecaster</h2>
+
+  <%= form_with url: weather_forecast_path, method: :get, data: { turbo_frame: "weather-frame", turbo_stream: true } do |f| %>
+    <%= f.text_field :zip, maxlength: 5, title: "5 digits for zip code", pattern: "\\d{5}", required: true, placeholder: "Enter Zip Code", data: { '1p-ignore': true }, value: (zip || "") %>
+    <%= f.submit "Get Forecast", name: "", class: "button" %>
+  <% end %>
+</div>

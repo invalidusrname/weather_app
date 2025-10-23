@@ -3,6 +3,8 @@ require "uri"
 require "net/http"
 
 class WeatherFetcher
+  API_BASE = "https://api.weatherapi.com/v1/forecast.json"
+
   def self.fetch_forecast(zip, force: false)
     return { error: "Invalid Zip Code" } unless zip.to_s.match?(/^\d{5}$/)
 
@@ -16,7 +18,7 @@ class WeatherFetcher
       params = { alerts: "no", aqi: "no", days: "5", key: api_key, q: zip }
       query = URI.encode_www_form(params)
 
-      uri = URI("https://api.weatherapi.com/v1/forecast.json?#{query}")
+      uri = URI("#{API_BASE}?#{query}")
 
       response = Net::HTTP.get_response(uri)
 
@@ -33,6 +35,10 @@ class WeatherFetcher
     else
       { forecast: forecast, cache_hit: cache_hit }
     end
+
+  rescue StandardError => e
+    Rails.logger.error "Forecast fetch exception: #{e.message}"
+    { error: "Forecast unavailable" }
   end
 
   def self.parse_weather_data(data)
