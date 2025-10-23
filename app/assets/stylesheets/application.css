@@ -136,3 +136,8 @@ button:hover, .button:hover {
         display: flex;
         justify-content: center;
 }
+
+.refresh a, .refresh button {
+        margin-left: 20px;
+}
+
