@@ -1,2 +1,3 @@
-<%= render partial: 'forecast', locals: { forecast: forecast, cache_hit: cache_hit, zip: params[:zip] } %>
-
+<turbo-frame id="weather-frame" data-turbo-action="advance">
+  <%= render partial: 'forecast', locals: { forecast: forecast, cache_hit: cache_hit, zip: zip } %>
+</turbo-frame>

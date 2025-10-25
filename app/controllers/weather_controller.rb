@@ -28,30 +28,15 @@ class WeatherController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to weather_index_path }
-      format.turbo_stream do
-        render turbo_stream: turbo_stream.update(
-          "weather-frame",
-          partial: "weather/error",
-          locals: { error: error_message, zip: zip }
-        )
-      end
     end
   end
 
   def handle_success(result, zip, force)
     forecast = result[:forecast]
     cache_hit = result[:cache_hit]
-    locals = { forecast:, cache_hit:, zip:, force: }
 
     respond_to do |format|
-      format.html { render :forecast, locals: }
-      format.turbo_stream do
-        render turbo_stream: turbo_stream.update(
-          "weather-frame",
-          partial: "weather/forecast",
-          locals:
-        )
-      end
+      format.html { render :forecast, locals: { forecast:, cache_hit:, zip: } }
     end
   end
 end

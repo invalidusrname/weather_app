@@ -20,13 +20,12 @@
       <small><i>using cache</i></small>
     </div>
   <% end %>
-
 </div>
 
-  <div class="refresh">
-      <%= link_to "Force Refresh", weather_forecast_path(zip: zip, force: 1), data: { turbo_frame: "weather-frame", turbo_stream: true }, class: "button" %>
-      <%= button_to "Get Another Forecast", weather_index_path, method: 'get' %>
-  </div>
+<div class="refresh">
+  <%= link_to "Force Refresh", weather_forecast_path(zip: zip, force: 1), data: { turbo_frame: "weather-frame" }, class: "button" %>
+  <%= button_to "Get Another Forecast", root_path, method: 'get' %>
+</div>
 
 <div class="go-back-container">
 </div>
