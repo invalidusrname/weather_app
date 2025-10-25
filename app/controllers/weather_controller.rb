@@ -1,4 +1,6 @@
 class WeatherController < ApplicationController
+  rate_limit to: 10, within: 1.minute, only: :forecast, with: :too_many_requests
+
   def index
   end
 
@@ -17,17 +19,22 @@ class WeatherController < ApplicationController
     handle_error("An unexpected error occurred", zip)
   end
 
+
+  def too_many_requests
+    handle_error("Too many requests. Wait a little bit before trying again")
+  end
+
   private
 
   def forecast_params
     params.permit(:zip, :force)
   end
 
-  def handle_error(error_message, zip)
+  def handle_error(error_message = "", zip = "")
     flash[:error] = error_message
 
     respond_to do |format|
-      format.html { redirect_to weather_index_path }
+      format.html { redirect_to root_path }
     end
   end
 
