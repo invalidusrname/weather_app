@@ -1,8 +1,11 @@
-<div class="form-container">
+<div class="form-container" data-controller="weather-fetcher">
   <h2>Weather Forecaster</h2>
 
   <%= form_with url: weather_forecast_path, method: :get, data: { turbo_frame: "weather-frame" } do |f| %>
-    <%= f.text_field :zip, autofocus: true, maxlength: 5, title: "5 digits for zip code", pattern: "\\d{5}", required: true, placeholder: "Enter Zip Code", data: { '1p-ignore': true }, value: (zip || "") %>
+    <%= f.text_field :zip, autofocus: true, maxlength: 5, title: "5 digits for zip code", pattern: "\\d{5}", required: true, placeholder: "Enter Zip Code", data:
+      { '1p-ignore': true , weather_fetcher_target: "input" }, value: (zip || "")
+    %>
+      <button type="button" data-action="click->weather-fetcher#getZip">Get My Zip Code</button>
     <%= f.submit "Get Forecast", name: "", class: "button" %>
   <% end %>
 </div>
