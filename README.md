@@ -36,3 +36,11 @@ Run the specs
 ```
 bundle exec rspec
 ```
+
+## Deploying
+
+deploys to weather.invalid8.com
+
+```
+./bin/kamal deploy
+```
