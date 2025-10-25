@@ -11,7 +11,7 @@ export default class extends Controller {
       this.inputTarget.value = zip;
     } catch (err) {
       console.error("Error:", err.message);
-      this.inputTarget.value = "Error: " + err.message;
+      this.inputTarget.value = "";
     }
   }
 
