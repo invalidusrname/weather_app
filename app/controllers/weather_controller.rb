@@ -26,24 +26,24 @@ class WeatherController < ApplicationController
 
   private
 
-  def forecast_params
-    params.permit(:zip, :force)
-  end
-
-  def handle_error(error_message = "", zip = "")
-    flash[:error] = error_message
-
-    respond_to do |format|
-      format.html { redirect_to root_path }
+    def forecast_params
+      params.permit(:zip, :force)
     end
-  end
 
-  def handle_success(result, zip, force)
-    forecast = result[:forecast]
-    cache_hit = result[:cache_hit]
+    def handle_error(error_message = "", zip = "")
+      flash[:error] = error_message
 
-    respond_to do |format|
-      format.html { render :forecast, locals: { forecast:, cache_hit:, zip: } }
+      respond_to do |format|
+        format.html { redirect_to root_path }
+      end
     end
-  end
+
+    def handle_success(result, zip, force)
+      forecast = result[:forecast]
+      cache_hit = result[:cache_hit]
+
+      respond_to do |format|
+        format.html { render :forecast, locals: { forecast:, cache_hit:, zip: } }
+      end
+    end
 end

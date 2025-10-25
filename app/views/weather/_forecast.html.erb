@@ -1,15 +1,15 @@
 <div id="weather-widget" class="weather-widget">
   <div class="current-weather">
-    <div class="city-name"><%= forecast[:location] %></div>
-    <div class="current-temp"><%= forecast[:current_temp] %>F</div>
+    <div class="city-name"><%= forecast.location %></div>
+    <div class="current-temp"><%= forecast.current_temp %>F</div>
   </div>
 
   <div class="forecast">
-    <% for day in forecast[:forecast_days] %>
+    <% for day in forecast.forecast_days %>
       <div class="forecast-day">
-        <div class="day-name"><%= Date::ABBR_DAYNAMES[Date.parse(day[:date]).wday] %></div>
+        <div class="day-name"><%= Date::ABBR_DAYNAMES[Date.parse(day.date).wday] %></div>
         <div class="high-low">
-          <%= day[:min_temp].round(0) %>°/<%= day[:max_temp].round(0) %>°
+          <%= day.min_temp.round(0) %>°/<%= day.max_temp.round(0) %>°
         </div>
       </div>
     <% end %>
