@@ -2,7 +2,19 @@
 require "uri"
 require "net/http"
 
+require_relative "weather/config"
+
 class WeatherFetcher
+  @@config = Weather::Config.new
+
+  def self.config
+    @@config
+  end
+
+  def self.configure
+    yield(config) if block_given?
+  end
+
   API_BASE = "https://api.weatherapi.com/v1/forecast.json"
 
   def self.fetch_forecast(zip, force: false)
@@ -11,7 +23,7 @@ class WeatherFetcher
     cache_key = "weather_forecast/#{zip}"
     cache_hit = true
 
-    api_key = ENV["WEATHER_API_TOKEN"] || Rails.application.credentials.dig(:weather_api, :token)
+    api_key = config.api_key
 
     forecast = Rails.cache.fetch(cache_key, expires_in: 30.minutes, force: force) do
       cache_hit = false
