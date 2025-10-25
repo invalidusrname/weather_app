@@ -12,6 +12,7 @@ module Weather
           convert_to_forecast(data)
         else
           Rails.logger.error "Unable to fetch weather from #{provider_name}: #{response.message}"
+
           nil
         end
       end
