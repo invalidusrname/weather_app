@@ -19,7 +19,6 @@ class WeatherController < ApplicationController
     handle_error("An unexpected error occurred", zip)
   end
 
-
   def too_many_requests
     handle_error("Too many requests. Wait a little bit before trying again")
   end
