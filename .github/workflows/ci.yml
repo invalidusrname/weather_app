@@ -67,4 +67,5 @@ jobs:
       - name: Run tests
         env:
           WEATHER_API_TOKEN: ${{ secrets.WEATHER_API_TOKEN }}
+          WEATHER_PROVIDER: ${{ secrets.WEATHER_PROVIDER }}
         run: ./bin/rspec
