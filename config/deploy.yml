@@ -44,5 +44,4 @@ asset_path: /rails/public/assets
 
 builder:
   arch: amd64
-  args:
-    GIT_SHA: ${KAMAL_VERSION:-$(git rev-parse HEAD)}
+

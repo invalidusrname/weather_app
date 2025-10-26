@@ -11,9 +11,6 @@
 ARG RUBY_VERSION=3.4.5
 FROM docker.io/library/ruby:$RUBY_VERSION-slim AS base
 
-ARG GIT_SHA
-ENV GIT_SHA=${GIT_SHA}
-
 # Rails app lives here
 WORKDIR /rails
 
