@@ -1,0 +1,49 @@
+#!/usr/bin/env ruby
+
+# These environment variables are available:
+# KAMAL_RECORDED_AT
+# KAMAL_PERFORMER
+# KAMAL_VERSION
+# KAMAL_HOSTS
+# KAMAL_COMMAND
+# KAMAL_SUBCOMMAND
+# KAMAL_ROLES (if set)
+# KAMAL_DESTINATION (if set)
+
+require "bundler/inline"
+
+gemfile(true, quiet: true) do
+  source "https://rubygems.org"
+  gem "octokit"
+  gem "faraday-retry"
+end
+
+def exit_with_error(message)
+  $stderr.puts message
+  exit 0
+end
+
+$stdout.sync = true
+
+begin
+  gh_repo = "invalidusrname/weather_app"
+  github_client = Octokit::Client.new(access_token: ENV["GITHUB_DEPLOYMENT_TOKEN"])
+
+  deployment = github_client.create_deployment(
+    gh_repo,
+    ENV["KAMAL_VERSION"],
+    task: ENV["KAMAL_COMMAND"],
+    auto_merge: false,
+    required_contexts: [],
+    environment: ENV["KAMAL_DESTINATION"] || "production",
+    description: "Deployment started via Kamal"
+  )
+
+  github_client.create_deployment_status(
+    deployment[:url],
+    "in_progress",
+    description: "Deployment in progress"
+  )
+rescue Octokit::ClientError => error
+  exit_with_error "GitHub API error: #{error.message}"
+end
