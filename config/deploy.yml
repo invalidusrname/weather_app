@@ -44,4 +44,5 @@ asset_path: /rails/public/assets
 
 builder:
   arch: amd64
-
+  args:
+    RUBY_VERSION: <%= File.read('.ruby-version').strip %>
