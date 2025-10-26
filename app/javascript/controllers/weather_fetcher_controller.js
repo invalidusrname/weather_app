@@ -3,11 +3,11 @@ import { Controller } from "@hotwired/stimulus";
 export default class extends Controller {
   static targets = ["input"];
 
-  async getZip() {
+  async updateZipFromGeo() {
     this.inputTarget.value = "Fetching...";
 
     try {
-      const zip = await this.getZipCode();
+      const zip = await this.determineZipCode();
       this.inputTarget.value = zip;
     } catch (err) {
       console.error("Error:", err.message);
@@ -15,7 +15,7 @@ export default class extends Controller {
     }
   }
 
-  async getZipCode() {
+  async determineZipCode() {
     if (!navigator.geolocation) {
       throw new Error("Geolocation is not supported by this browser.");
     }

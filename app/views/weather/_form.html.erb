@@ -2,10 +2,16 @@
   <h2>Weather Forecaster</h2>
 
   <%= form_with url: weather_forecast_path, method: :get, data: { turbo_frame: "weather-frame" } do |f| %>
-    <%= f.text_field :zip, autofocus: true, maxlength: 5, title: "5 digits for zip code", pattern: "\\d{5}", required: true, placeholder: "Enter Zip Code", data:
-      { '1p-ignore': true , weather_fetcher_target: "input" }, value: (zip || "")
+    <%= f.text_field :zip,
+                    autofocus: true,
+                    data: { '1p-ignore': true , weather_fetcher_target: "input" },
+                    maxlength: 5,
+                    pattern: "\\d{5}",
+                    placeholder: "Enter Zip Code", value: (zip || ""),
+                    required: true,
+                    title: "5 digits for zip code"
     %>
-      <button type="button" data-action="click->weather-fetcher#getZip">
+      <button type="button" data-action="click->weather-fetcher#updateZipFromGeo">
         <span class="glyphicon glyphicon-map-marker"></span>
         Use Location
       </button>
