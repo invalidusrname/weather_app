@@ -1,34 +1,17 @@
 #!/usr/bin/env ruby
 
-# These environment variables are available:
-# KAMAL_RECORDED_AT
-# KAMAL_PERFORMER
-# KAMAL_VERSION
-# KAMAL_HOSTS
-# KAMAL_ROLES (if set)
-# KAMAL_DESTINATION (if set)
-# KAMAL_RUNTIME
-
-require "bundler/inline"
-
-gemfile { gem "octokit" }
-
-def exit_with_error(message)
-  $stderr.puts message
-  exit 0
-end
+require_relative 'common'
 
 $stdout.sync = true
 
 begin
-  gh_repo = "invalidusrname/weather_app"
-  github_client = Octokit::Client.new(access_token: ENV["GITHUB_DEPLOYMENT_TOKEN"])
+  client = github_client
 
-  deployments = github_client.deployments(gh_repo, ref: ENV["KAMAL_VERSION"])
+  deployments = client.deployments(GH_REPO, ref: ENV["KAMAL_VERSION"])
   latest_deployment = deployments.first
 
   if latest_deployment
-    github_client.create_deployment_status(
+    client.create_deployment_status(
       latest_deployment[:url],
       "success",
       description: "Deployment completed successfully in #{ENV['KAMAL_RUNTIME']} seconds"
