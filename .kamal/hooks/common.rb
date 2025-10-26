@@ -1,6 +1,6 @@
 require "bundler/inline"
 
-gemfile { gem "octokit" }
+gemfile(true) { gem "octokit" }
 
 GH_REPO = "invalidusrname/weather_app"
 
