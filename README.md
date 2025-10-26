@@ -42,5 +42,5 @@ bundle exec rspec
 deploys to weather.invalid8.com
 
 ```
-./bin/kamal deploy
+DEPLOYMENTS_GITHUB_TOKEN='CHANGE_ME' ./bin/kamal deploy
 ```

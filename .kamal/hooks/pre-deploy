@@ -1,0 +1,27 @@
+#!/usr/bin/env ruby
+
+require_relative "common"
+
+$stdout.sync = true
+
+begin
+  client = github_client
+
+  deployment = client.create_deployment(
+    GH_RPEO,
+    ENV["KAMAL_VERSION"],
+    auto_merge: false,
+    description: "Deployment started via Kamal",
+    environment: ENV["KAMAL_DESTINATION"] || "production",
+    required_contexts: [],
+    task: ENV["KAMAL_COMMAND"],
+  )
+
+  client.create_deployment_status(
+    deployment[:url],
+    "in_progress",
+    description: "Deployment in progress"
+  )
+rescue Octokit::ClientError => error
+  exit_with_error "GitHub API error: #{error.message}"
+end

@@ -1,0 +1,24 @@
+#!/usr/bin/env ruby
+
+require_relative 'common'
+
+$stdout.sync = true
+
+begin
+  client = github_client
+
+  deployments = client.deployments(GH_REPO, ref: ENV["KAMAL_VERSION"])
+  latest_deployment = deployments.first
+
+  if latest_deployment
+    client.create_deployment_status(
+      latest_deployment[:url],
+      "success",
+      description: "Deployment completed successfully in #{ENV['KAMAL_RUNTIME']} seconds"
+    )
+  else
+    exit_with_error "No matching deployment found to update"
+  end
+rescue Octokit::ClientError => error
+  exit_with_error "GitHub API error: #{error.message}"
+end
