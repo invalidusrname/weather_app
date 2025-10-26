@@ -1,5 +1,5 @@
 class VersionController < ApplicationController
-  def show
+  def index
     render json: { version: ENV["GIT_SHA"] || "unknown" }
   end
 end
