@@ -5,5 +5,7 @@ Rails.application.routes.draw do
   get "weather/index"
   get "weather/forecast"
 
+  get "version/show"
+
   root "weather#index"
 end
