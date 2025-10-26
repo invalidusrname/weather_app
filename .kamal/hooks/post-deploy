@@ -11,11 +11,7 @@
 
 require "bundler/inline"
 
-gemfile(true, quiet: true) do
-  source "https://rubygems.org"
-  gem "octokit"
-  gem "faraday-retry"
-end
+gemfile { gem "octokit" }
 
 def exit_with_error(message)
   $stderr.puts message
