@@ -5,7 +5,10 @@
     <%= f.text_field :zip, autofocus: true, maxlength: 5, title: "5 digits for zip code", pattern: "\\d{5}", required: true, placeholder: "Enter Zip Code", data:
       { '1p-ignore': true , weather_fetcher_target: "input" }, value: (zip || "")
     %>
-      <button type="button" data-action="click->weather-fetcher#getZip">Get My Zip Code</button>
+      <button type="button" data-action="click->weather-fetcher#getZip">
+        <span class="glyphicon glyphicon-map-marker"></span>
+        Use Location
+      </button>
     <%= f.submit "Get Forecast", name: "", class: "button" %>
   <% end %>
 </div>
