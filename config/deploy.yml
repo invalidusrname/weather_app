@@ -18,10 +18,6 @@ ssh:
 registry:
   server: localhost:5555
 
-builder:
-  args:
-    GIT_SHA: ${KAMAL_VERSION:-$(git rev-parse HEAD)}
-
 env:
   secret:
     - RAILS_MASTER_KEY
@@ -48,3 +44,4 @@ asset_path: /rails/public/assets
 
 builder:
   arch: amd64
+

@@ -10,7 +10,7 @@ RSpec.describe "Versions", type: :request do
     end
 
     it "knows the version" do
-      allow(ENV).to receive(:[]).with('GIT_SHA').and_return('lol123')
+      allow(ENV).to receive(:[]).with('KAMAL_VERSION').and_return('lol123')
 
       get "/version"
 
