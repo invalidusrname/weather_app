@@ -8,7 +8,7 @@ begin
   client = github_client
 
   deployment = client.create_deployment(
-    GH_RPEO,
+    GH_REPO,
     ENV["KAMAL_VERSION"],
     auto_merge: false,
     description: "Deployment started via Kamal",
