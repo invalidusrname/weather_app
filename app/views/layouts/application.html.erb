@@ -24,7 +24,9 @@
   </head>
 
   <body>
-    <%= render "shared/flash" %>
+    <%= turbo_frame_tag "flash-messages" do %>
+      <%= render "shared/flash" %>
+    <% end %>
     <%= yield %>
   </body>
 </html>

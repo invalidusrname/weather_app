@@ -1,7 +1,7 @@
 <div class="form-container" data-controller="weather-fetcher">
   <h2>Weather Forecaster</h2>
 
-  <%= form_with url: weather_forecast_path, method: :get, data: { turbo_frame: "weather-frame" } do |f| %>
+  <%= form_with url: weather_forecast_path, method: :post, data: { turbo_frame: "weather-frame" } do |f| %>
     <%= f.text_field :zip,
                     autofocus: true,
                     data: { '1p-ignore': true , weather_fetcher_target: "input" },
@@ -11,10 +11,10 @@
                     required: true,
                     title: "5 digits for zip code"
     %>
-      <button type="button" data-action="click->weather-fetcher#updateZipFromGeo">
-        <span class="glyphicon glyphicon-map-marker"></span>
-        Use Location
-      </button>
+    <button type="button" data-action="click->weather-fetcher#updateZipFromGeo">
+      <span class="glyphicon glyphicon-map-marker"></span>
+      Use Location
+    </button>
     <%= f.submit "Get Forecast", name: "", class: "button" %>
   <% end %>
 </div>

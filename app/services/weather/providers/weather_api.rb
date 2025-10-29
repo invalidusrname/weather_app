@@ -11,9 +11,9 @@ module Weather
           data = JSON.parse(response.body)
           convert_to_forecast(data)
         else
-          Rails.logger.error "Unable to fetch weather from #{provider_name}: #{response.message}"
-
-          nil
+          msg = "Unable to fetch weather from #{provider_name}: #{response.message}"
+          Rails.logger.error msg
+          raise StandardError.new(msg)
         end
       end
 

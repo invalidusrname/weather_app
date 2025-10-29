@@ -1,3 +1,3 @@
-<turbo-frame id="weather-frame" data-turbo-action="advance">
+<%= turbo_frame_tag "weather-frame", data: { turbo_action: "advance" } do %>
   <%= render partial: 'forecast', locals: { forecast: forecast, cache_hit: cache_hit, zip: zip } %>
-</turbo-frame>
+<% end %>
