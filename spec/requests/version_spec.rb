@@ -15,7 +15,7 @@ RSpec.describe "Versions", type: :request do
       get "/version"
 
       expect(response).to have_http_status(:success)
-      expect(JSON.parse(response.body)).to eq({ "version" => "lol124" })
+      expect(JSON.parse(response.body)).to eq({ "version" => "lol123" })
     end
   end
 end
