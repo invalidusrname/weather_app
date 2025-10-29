@@ -15,6 +15,6 @@
       <span class="glyphicon glyphicon-map-marker"></span>
       Use Location
     </button>
-    <%= f.submit "Get Forecast", name: "", class: "button" %>
+    <%= f.submit "Get Forecast", name: "", class: "button", data: { turbo_stream: true } %>
   <% end %>
 </div>
