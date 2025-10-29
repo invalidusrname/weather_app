@@ -31,7 +31,7 @@ class WeatherFetcher
         forecast = provider.query(zip)
       rescue StandardError => e
         Rails.logger.error "Forecast fetch exception for #{provider.provider_name}: #{e.message}"
-        return { error: "Forecast unavailable" }
+        nil
       end
     end
 
