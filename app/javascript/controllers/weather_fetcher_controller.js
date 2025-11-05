@@ -1,5 +1,7 @@
 import { Controller } from "@hotwired/stimulus";
 
+const API_URL = "https://api.bigdatacloud.net/data/reverse-geocode-client";
+
 export default class extends Controller {
   static targets = ["input"];
 
@@ -30,9 +32,10 @@ export default class extends Controller {
 
     const { latitude, longitude } = position.coords;
 
-    const response = await fetch(
-      `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`,
-    );
+    const url = new URL(API_URL);
+    url.search = new URLSearchParams({ latitude, longitude, localityLanguage: "en" });
+
+    const response = await fetch(url);
 
     if (!response.ok) {
       throw new Error("Failed to fetch zip code.");
