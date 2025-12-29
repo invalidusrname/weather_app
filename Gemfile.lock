@@ -319,8 +319,7 @@ GEM
     unicode-emoji (4.1.0)
     uri (1.1.1)
     useragent (0.16.11)
-    vcr (6.3.1)
-      base64
+    vcr (6.4.0)
     web-console (4.2.1)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -364,7 +363,7 @@ DEPENDENCIES
   thruster
   turbo-rails
   tzinfo-data
-  vcr (~> 6.3)
+  vcr (~> 6.4)
   web-console
   webmock (= 3.26.1)
 
