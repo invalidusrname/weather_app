@@ -1,0 +1,7 @@
+name: Dummy Workflow to Block GitHub Fallback
+on: [push]
+jobs:
+  noop:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "This is a placeholder to disable .github/workflows"
