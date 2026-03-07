@@ -6,7 +6,7 @@ GH_REPO = "invalidusrname/weather_app"
 
 def exit_with_error(message)
   $stderr.puts message
-  exit 0
+  exit 1
 end
 
 def github_client
