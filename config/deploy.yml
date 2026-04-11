@@ -11,6 +11,8 @@ servers:
       host: weather.invalid8.com
       healthcheck:
         path: /up
+      run:
+        metrics_port: 9000
 
 ssh:
   user: app
