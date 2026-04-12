@@ -3,7 +3,10 @@
 require_relative "common"
 
 require "bundler/inline"
-gemfile(true) { gem "shipyrd", "~> 0.2.10" }
+gemfile(true) do
+  gem "logger"
+  gem "shipyrd", "~> 0.2.10"
+end
 Shipyrd::Client.new.trigger('pre-deploy')
 
 $stdout.sync = true
