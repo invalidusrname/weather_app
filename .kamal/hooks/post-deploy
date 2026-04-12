@@ -2,6 +2,9 @@
 
 require_relative 'common'
 
+require 'shipyrd'
+Shipyrd::Client.new.trigger('post-deploy')
+
 $stdout.sync = true
 
 begin
