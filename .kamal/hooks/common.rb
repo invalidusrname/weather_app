@@ -1,6 +1,4 @@
-require "bundler/inline"
-
-gemfile(true) { gem "octokit" }
+# frozen_string_literal: true
 
 GH_REPO = "invalidusrname/weather_app"
 

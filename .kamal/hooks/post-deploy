@@ -1,15 +1,17 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
-require_relative 'common'
+ENV["BUNDLE_GEMFILE"] ||= File.expand_path("../../Gemfile.kamal", __dir__)
+require "bundler/setup"
 
-require "bundler/inline"
-gemfile(true) do
-  gem "logger"
-  gem "shipyrd", "~> 0.2.10"
-end
-Shipyrd::Client.new.trigger('post-deploy')
+require "shipyrd"
+require "octokit"
+
+require_relative "common"
 
 $stdout.sync = true
+
+Shipyrd::Client.new.trigger("post-deploy")
 
 begin
   client = github_client
