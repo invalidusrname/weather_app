@@ -323,7 +323,7 @@ GEM
       addressable (>= 2.3.5)
       faraday (>= 0.17.3, < 3)
     securerandom (0.4.1)
-    shipyrd (0.2.12)
+    shipyrd (0.2.14)
     sshkit (1.25.1)
       base64
       logger
@@ -391,7 +391,7 @@ DEPENDENCIES
   rails (~> 8.1)
   rspec-rails (~> 8.1)
   rubocop-rails-omakase
-  shipyrd (~> 0.2.12)
+  shipyrd (~> 0.2.14)
   stimulus-rails
   thruster
   turbo-rails
